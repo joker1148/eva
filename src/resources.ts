@@ -21,6 +21,7 @@ export default [
           './statics/cat.png',
       },
     },
+    preload: true,
   },
   {
     name: 'basketball',

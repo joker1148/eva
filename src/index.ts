@@ -1,8 +1,8 @@
 import createBackground from './gameObjects/background';
 import createBasketFront from './gameObjects/board/basketFront';
 import createBoard from './gameObjects/board/board';
-import createBall from './gameObjects/ball';
-import createBtn from './gameObjects/btn';
+// import createBall from './gameObjects/ball';
+// import createBtn from './gameObjects/btn';
 // import createCat from './gameObjects/cat';
 import resources from './resources';
 
@@ -41,64 +41,50 @@ const game = new Game({
 game.scene.transform.size.width = 750;
 game.scene.transform.size.height = 1484;
 
-const pos = {
-  x: 500,
-  y: 1100,
-};
+// const pos = {
+//   x: 500,
+//   y: 1100,
+// };
 
-const ball = createBall(pos);
+// const ball = createBall(pos);
 // const cat = createCat();
 
 
-const gameObject = new GameObject('spine', {
-  anchor: {
-    x: 0.5,
-    y: 0.5,
-  },
-  scale: {
-    x: 0.5,
-    y: 0.5,
-  },
-});
-const spine = new Spine({ resource: 'anim', animationName: 'idle' });
-gameObject.addComponent(spine);
-console.log(spine)
-spine.on('complete', e => {
-  console.log('动画播放结束', e.name);
-});
-console.log(spine)
-spine.play('idle');
-
-
-const { basetFront, playAnim } = createBasketFront();
-const btn = createBtn({
-  text: '投球',
-  transform: {
-    position: {
-      x: 0,
-      y: -120,
+function createObject(name: any) {
+  const gameObject = new GameObject(`spine${name}`, {
+    anchor: {
+      x: Math.random(),
+      y: Math.random(),
     },
-    origin: {
+    scale: {
       x: 0.5,
       y: 0.5,
     },
-    anchor: {
-      x: 0.5,
-      y: 1,
-    },
-  },
-  callback: () => {
-    alert('还没做呢～一起来完善吧')
-  },
-});
+  });
+  const spine = new Spine({ resource: 'anim', animationName: 'dianji' });
+  gameObject.addComponent(spine);
+  // console.log(spine)
+  spine.on('complete', () => {
+    // console.log(e);
+  });
+  // console.log(spine)
+  spine.play('dianji');
+  game.scene.addChild(gameObject);
+}
+
+
+
+const { basetFront, playAnim } = createBasketFront();
 
 game.scene.addChild(createBackground());
 game.scene.addChild(createBoard());
 // game.scene.addChild(cat);
-game.scene.addChild(ball);
-game.scene.addChild(gameObject);
-game.scene.addChild(basetFront);
-game.scene.addChild(btn);
 
+// game.scene.addChild(ball);
+game.scene.addChild(basetFront);
+// game.scene.addChild(btn);
+for(let i = 0; i < 10; i++) {
+  createObject(i)
+}
 window.playAnim = playAnim;
 window.game = game;
