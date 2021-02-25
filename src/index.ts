@@ -1,6 +1,6 @@
-import createBackground from './gameObjects/background';
-import createBasketFront from './gameObjects/board/basketFront';
-import createBoard from './gameObjects/board/board';
+// import createBackground from './gameObjects/background';
+// import createBasketFront from './gameObjects/board/basketFront';
+// import createBoard from './gameObjects/board/board';
 // import createBall from './gameObjects/ball';
 // import createBtn from './gameObjects/btn';
 // import createCat from './gameObjects/cat';
@@ -74,17 +74,17 @@ function createObject(name: any) {
 
 
 
-const { basetFront, playAnim } = createBasketFront();
+// const { basetFront, playAnim } = createBasketFront();
 
-game.scene.addChild(createBackground());
-game.scene.addChild(createBoard());
+// game.scene.addChild(createBackground());
+// game.scene.addChild(createBoard());
 // game.scene.addChild(cat);
 
 // game.scene.addChild(ball);
-game.scene.addChild(basetFront);
+// game.scene.addChild(basetFront);
 // game.scene.addChild(btn);
-for(let i = 0; i < 10; i++) {
+for(let i = 0; i < 100; i++) {
   createObject(i)
 }
-window.playAnim = playAnim;
+// window.playAnim = playAnim;
 window.game = game;
